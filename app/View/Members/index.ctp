@@ -1,5 +1,8 @@
 <h1>ユーザー登録ページ</h1>
-<h2>ユーザー追加</h2>
+<?php echo $this->Html->link(
+    'ユーザー追加',
+    array('controller' => 'members', 'action' => 'add')
+); ?>
 <table>
     <tr>
         <th>名前</th>
@@ -20,7 +23,6 @@
             ?>
         </td>
         <td><?php echo $member['Department']['department_name']; ?></td>
-
         <td>
             <?php 
                 $age = floor((date('Ymd') - str_replace('-', '', $member['Member']['birthday'])) / 10000);
@@ -35,7 +37,7 @@
         <td>
             <?php 
                 $years_of_employment = floor((date('Ymd') - str_replace('-', '', $member['Member']['hire_date'])) / 10000);
-                echo $age . '年';
+                echo $years_of_employment . '年';
             ?>
         </td>
     </tr>

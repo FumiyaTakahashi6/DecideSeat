@@ -17,4 +17,19 @@ class Member extends AppModel {
         'unique' => true
         ),
     );
+
+    public $validate = array(
+        'member_name' => array(
+            'rule' => 'notBlank'
+        ),
+        'gender' => array(
+            'rule' => 'notBlank'
+        ),
+        'birthday' => array(
+            'rule' => 'notBlank'
+        ),
+        'hire_date' => array(
+            'rule' => 'notBlank'
+        )
+    );
 }
