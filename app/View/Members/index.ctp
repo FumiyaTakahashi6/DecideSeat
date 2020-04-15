@@ -11,6 +11,7 @@
         <th>生年月日</th>
         <th>属性</th>
         <th>入社年数</th>
+        <th>操作</th>
     </tr>
 
     <?php foreach ($members as $member): ?>
@@ -38,6 +39,21 @@
             <?php 
                 $years_of_employment = floor((date('Ymd') - str_replace('-', '', $member['Member']['hire_date'])) / 10000);
                 echo $years_of_employment . '年';
+            ?>
+        </td>
+        <td>
+            <?php
+                echo $this->Html->link(
+                    '編集',
+                    ['action' => 'edit', $member['Member']['id']]
+                );
+            ?>
+            <?php
+                echo $this->Form->postLink(
+                    '削除',
+                    ['action' => 'delete', $member['Member']['id']],
+                    ['confirm' => 'Are you sure?']
+                );
             ?>
         </td>
     </tr>
