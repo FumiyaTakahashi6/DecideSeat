@@ -10,7 +10,7 @@ class Member extends AppModel {
     
     public $hasAndBelongsToMany = array(
         'Attribute' => array(
-        'className' => 'Attribute',
+        'className' => 'attribute',
         'joinTable' => 'members_attributes',
         'foreignKey' => 'member_id',
         'associationForeignKey' => 'attribute_id',
