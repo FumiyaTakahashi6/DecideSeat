@@ -5,7 +5,6 @@ class MembersController extends AppController {
     public $components = ['Flash'];
 
     public function index() {
-        debug($this->Member->findById(1));
         $this->set('members', $this->Member->find('all'));
     }
 
@@ -86,5 +85,16 @@ class MembersController extends AppController {
         }
     
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function select() {
+        
+        $this->set('members', $this->Member->find('all'));
+        $this->loadModel('Attribute');
+        $this->set('attributes', $this->Attribute->find('list', [
+            'fields' => 'Attribute.attribute_name'
+        ]));
+        
+        $this->log(($this->request->data),LOG_DEBUG);
     }
 }

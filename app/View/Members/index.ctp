@@ -3,6 +3,10 @@
     'ユーザー追加',
     array('controller' => 'members', 'action' => 'add')
 ); ?>
+<?php echo $this->Html->link(
+    'ユーザー選択',
+    array('controller' => 'members', 'action' => 'select')
+); ?>
 <table>
     <tr>
         <th>名前</th>
