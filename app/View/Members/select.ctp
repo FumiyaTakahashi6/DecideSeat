@@ -21,7 +21,7 @@
                 <tr>
                     <td>
                         <?php
-                            echo $this->Form->input('participant.'. $index, [
+                            echo $this->Form->input('Participants.'. $index, [
                                 'type' => 'checkbox',
                                 'value' => $member['Member']['id'],
                                 'hiddenField' => false,
@@ -48,30 +48,29 @@
             </table> 
         </div>
     </div>
+
     <div class="tab_content" id="programming_content">
         <h2>テーブル設定</h2>
         <?php 
-            echo $this->Form->input('', [
-                'options' => range(1, 10),
+            echo $this->Form->input('Table.table_sum', [
+                'options' => array_combine(
+                    range(1, 5),
+                    range(1, 5)
+                ),
                 'empty' => 'テーブル数を選択してください',
-                'onchange' => 'table_add(value)'
+                'onchange' => 'table_add(value)',
             ]);
+
         ?>
         <table id="table">
             <tr>
                 <th>テーブル番号</th>
                 <th>座席数</th>
             </tr>
-            <tr>
-            </tr>
+            <td>
+            </td>
         </table>
         <h2>条件設定</h2>
-        <?php
-            echo $this->Form->input('Conditions.conditions', [
-                'options' => ['部署'],
-                'empty' => '振り分け条件選択してください'
-            ]);
-        ?>
         <table>
             <tr>
                 <th>優先度</th>
@@ -83,7 +82,7 @@
                     <td>
                         <?php
                         echo $this->Form->input('Conditions.priority.' . $i, [
-                            'options' => $attributes,
+                            'options' => $attributes + $attributes_group,
                             'empty' => '優先度選択してください',
                             'div' => false  
                         ]);

@@ -29,10 +29,7 @@
         </td>
         <td><?php echo $member['Department']['department_name']; ?></td>
         <td>
-            <?php 
-                $age = floor((date('Ymd') - str_replace('-', '', $member['Member']['birthday'])) / 10000);
-                echo $age . '歳';
-            ?>
+            <?php echo $member['Member']['birthday']; ?>
         </td>
         <td>
             <?php foreach ($member['Attribute'] as $attribute): ?>
