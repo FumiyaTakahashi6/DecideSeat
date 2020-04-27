@@ -1,15 +1,21 @@
+<?php echo $this->Html->script('https://code.jquery.com/jquery-2.2.4.min.js'); ?>
 <?php echo $this->Html->css('select.css');?>
 <?php echo $this->Html->script('select', array('inline' => true)); ?>
 <h1>ユーザー選択ページ</h1>
+<?php echo $this->Html->link(
+    'ユーザー登録',
+    array('controller' => 'members', 'action' => 'index')
+); ?>
 <?php echo $this->Form->create('Member'); ?>
 <div>
     <input id="all" type="radio" name="tab_item" checked>
     <label class="tab_item" for="all">参加者設定</label>
     <input id="programming" type="radio" name="tab_item">
     <label class="tab_item" for="programming">条件設定</label>
+    <p class="tohokuret"></p>
     <div class="tab_content" id="all_content">
         <div class="tab_content_description">
-            <table>
+            <table id=participant_table >
                 <tr>
                     <th>選択</th>
                     <th>名前</th>
@@ -54,21 +60,38 @@
         <?php 
             echo $this->Form->input('Table.table_sum', [
                 'options' => array_combine(
-                    range(1, 5),
-                    range(1, 5)
+                    range(1, 10),
+                    range(1, 10)
                 ),
                 'empty' => 'テーブル数を選択してください',
                 'onchange' => 'table_add(value)',
+                'label' => false,
+                'default' => $table_sum
             ]);
-
         ?>
         <table id="table">
             <tr>
                 <th>テーブル番号</th>
                 <th>座席数</th>
             </tr>
-            <td>
-            </td>
+                <?php for ($i = 0; $i < $table_sum; $i++): ?>
+            <tr>
+                <td><?php echo $i + 1 ?></td>
+                <td>
+                <?php 
+                    echo $this->Form->input('Table.seat_sum.' . $i, [
+                        'options' => array_combine(
+                            range(1, 5),
+                            range(1, 5)
+                        ),
+                        'div' => false,  
+                        'label' => false,
+                        'default' => $seat_sum[$i]
+                    ]);
+                ?>
+                </td>
+            </tr>
+            <?php endfor; ?>
         </table>
         <h2>条件設定</h2>
         <table>
@@ -84,7 +107,9 @@
                         echo $this->Form->input('Conditions.priority.' . $i, [
                             'options' => $attributes + $attributes_group,
                             'empty' => '優先度選択してください',
-                            'div' => false  
+                            'div' => false,
+                            'label' => false,
+                            'default' => $priority[$i]
                         ]);
                         ?>
                     </td>
@@ -93,4 +118,4 @@
         </table>
     </div>
 </div>
-<?php echo $this->Form->end('Save Member'); ?>
+<?php echo $this->Form->end('シャッフル'); ?>

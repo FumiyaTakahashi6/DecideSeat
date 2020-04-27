@@ -26,13 +26,9 @@ function table_delete() {
   }
 }
 
-window.onload = () => {
-  console.log("test")
-  setTimeout(() => {
-    const select = document.getElementById('TableTableSum')
-    console.log(select.value)
-  }, 2000);
-  // setTimeout(2000);
-  // const select = document.getElementById('TableTableSum')
-  // console.log(select.value)
-}
+$(window).load(function(){
+  $('input:checkbox').change(function() {
+      var cnt = $('#participant_table input:checkbox:checked').length;
+      $('.tohokuret').text('参加人数： ' + cnt + '　人');
+  }).trigger('change');
+});

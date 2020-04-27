@@ -21,7 +21,7 @@ class UsersController extends AppController {
         }
         $this->set('user', $this->User->findById($id));
     }
-
+/*
     public function add() {
         if ($this->request->is('post')) {
             $this->User->create();
@@ -37,7 +37,7 @@ class UsersController extends AppController {
             );
         }
     }
-
+*/
     public function edit($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {

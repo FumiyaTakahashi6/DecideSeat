@@ -32,4 +32,8 @@ class Member extends AppModel {
             'rule' => 'notBlank'
         )
     );
+
+    public function isOwnedBy($member, $user) {
+        return $this->field('id', array('id' => $member, 'user_id' => $user)) !== false;
+    }
 }

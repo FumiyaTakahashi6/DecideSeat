@@ -12,3 +12,7 @@
         <?php endforeach; ?>
     </table>
 <?php endforeach; ?>
+<?php echo $this->Html->link(
+    '再設定',
+    array('controller' => 'members', 'action' => 'select')
+); ?>
