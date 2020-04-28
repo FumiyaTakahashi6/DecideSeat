@@ -27,11 +27,21 @@
                 <tr>
                     <td>
                         <?php
+                            if ($participants == null) {
+                                $checked = true;
+                            } else {
+                                if (in_array($member['Member']['id'], $participants)) {
+                                    $checked = true;
+                                } else {
+                                    $checked = false;
+                                }
+                            }
                             echo $this->Form->input('Participants.'. $index, [
                                 'type' => 'checkbox',
                                 'value' => $member['Member']['id'],
                                 'hiddenField' => false,
-                                'checked' => true
+                                'checked' => $checked,
+                                'label' => false,
                         ]);
                         ?>
                     </td>
@@ -58,6 +68,7 @@
     <div class="tab_content" id="programming_content">
         <h2>テーブル設定</h2>
         <?php 
+        $this->log(($participants),LOG_DEBUG);
             echo $this->Form->input('Table.table_sum', [
                 'options' => array_combine(
                     range(1, 10),

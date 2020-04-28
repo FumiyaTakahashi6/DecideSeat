@@ -108,20 +108,34 @@ class MembersController extends AppController {
         // 属性グループデータの送信
         $this->set('attributes_group', [
             '部署' => '部署'
-        ]);
+        ]);        
 
         if ($this->request->is('post')) {
+
+            $this->Session->delete('Participants');
+            $this->Session->delete('Table');
+            $this->Session->delete('Conditions');
+
             //　サーバにデータを保存
-            $this->Session->write('Table.table_sum',$this->request->data['Table']['table_sum']);
-
-            foreach ($this->request->data['Table']['seat_sum'] as $index => $seat_sum) {
-                $this->Session->write('Table.seat_sum.' . $index, $seat_sum);
+            if (!empty($this->request->data['Participants'])) {
+                foreach ($this->request->data['Participants'] as $index => $participant) {
+                    $this->Session->write('Participants.' . $index, $participant);
+                }
             }
 
-            foreach ($this->request->data['Conditions']['priority'] as $index => $priority) {
-                $this->Session->write('Conditions.priority.' . $index, $priority);
+            if (!empty($this->request->data['Table']['table_sum'])) {
+                $this->Session->write('Table.table_sum',$this->request->data['Table']['table_sum']);
+                foreach ($this->request->data['Table']['seat_sum'] as $index => $seat_sum) {
+                    $this->Session->write('Table.seat_sum.' . $index, $seat_sum);
+                }
             }
 
+
+            if (!empty($this->request->data['Conditions']['priority'])) {
+                foreach ($this->request->data['Conditions']['priority'] as $index => $priority) {
+                    $this->Session->write('Conditions.priority.' . $index, $priority);
+                }
+            }
 
             // エラー処理
             try {
@@ -259,9 +273,15 @@ class MembersController extends AppController {
             } catch (Exception $e) {
 
             }
-            
         }
+
         // 初期値の設定
+        if ($this->Session->check('Participants')) {
+            $this->set('participants', $this->Session->read('Participants'));
+        } else {
+            $this->set('participants', null);
+        }
+
         if ($this->Session->check('Table.table_sum')) {
             $this->set('table_sum', $this->Session->read('Table.table_sum'));
             $this->set('seat_sum', $this->Session->read('Table.seat_sum'));
@@ -274,6 +294,5 @@ class MembersController extends AppController {
         } else {
             $this->set('priority', 0);
         }
-        //$this->Session->delete('Table');
     }
 }
