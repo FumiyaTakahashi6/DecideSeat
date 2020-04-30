@@ -1,25 +1,39 @@
-<h1>ユーザー登録ページ</h1>
-<?php echo $this->Html->link(
-    'ユーザー追加',
-    array('controller' => 'members', 'action' => 'add')
-); ?>
-<?php echo $this->Html->link(
-    'ユーザー選択',
-    array('controller' => 'members', 'action' => 'select')
-); ?>
-<table>
-    <tr>
-        <th>名前</th>
-        <th>性別</th>
-        <th>部署</th>
-        <th>生年月日</th>
-        <th>属性</th>
-        <th>入社年数</th>
-        <th>操作</th>
-    </tr>
+<?= $this->Html->css('bootstrap.min.css') ?>
+<?= $this->Html->script('https://code.jquery.com/jquery-2.2.4.min.js'); ?>
+<?= $this->Html->script('bootstrap.min.js') ?>
 
+<div class="w-100 p-3 ">
+    <div class="w-100 p-2 border-bottom">
+        <h3>ユーザー一覧</h3>
+    </div>
+</div>
+
+<div class="float-right">
+    <?php echo $this->Html->link(
+        'ユーザーの新規追加',
+        [
+            'controller' => 'members',
+            'action' => 'add'
+        ],
+        [
+            'class' => 'btn btn-info'
+        ]
+    ); ?>
+</div>
+<table class="table table-bordered table-sm">
+    <thead style="background-color:skyblue">
+        <tr>
+            <th>名前</th>
+            <th>性別</th>
+            <th>部署</th>
+            <th>生年月日</th>
+            <th>属性</th>
+            <th>入社年数</th>
+            <th>操作</th>
+        </tr>
+    </thead>
     <?php foreach ($members as $member): ?>
-    <tr>
+    <tr class="bg-light">
         <td><?php echo $member['Member']['member_name']; ?></td>
         <td>
             <?php 
@@ -43,17 +57,27 @@
             ?>
         </td>
         <td>
-            <?php
-                echo $this->Html->link(
-                    '編集',
-                    ['action' => 'edit', $member['Member']['id']]
-                );
-            ?>
+            <?php echo $this->Html->link(
+                '編集',
+                [
+                    'action' => 'edit',
+                    $member['Member']['id']
+                ],
+                [
+                    'class' => 'btn btn-success'
+                ]
+            ); ?>
             <?php
                 echo $this->Form->postLink(
                     '削除',
-                    ['action' => 'delete', $member['Member']['id']],
-                    ['confirm' => 'Are you sure?']
+                    [
+                        'action' => 'delete',
+                        $member['Member']['id']
+                    ],
+                    [
+                        'confirm' => '本当に削除してもよろしいですか?',
+                        'class' => 'btn btn-danger'
+                    ]
                 );
             ?>
         </td>

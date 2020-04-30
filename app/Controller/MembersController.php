@@ -141,18 +141,18 @@ class MembersController extends AppController {
             try {
                 if ($this->request->data['Participants'] == null) {
                     $this->Flash->error(__('参加者が設定されていません'));
-                    throw new Exception('顧客リストCSVをダウンロードできません');
+                    throw new Exception('参加者が設定されていません');
                 }
     
                 if ($this->request->data['Table']['table_sum'] == null) {
                     $this->Flash->error(__('テーブルが設定されていません'));
-                    throw new Exception('顧客リストCSVをダウンロードできません');
+                    throw new Exception('テーブルが設定されていません');
                 }
     
                 if (count($this->request->data['Participants']) > array_sum($this->request->data['Table']['seat_sum'])
                     && $this->request->data['Table']['table_sum'] != null) {
                     $this->Flash->error(__('座席数が足りていません'));
-                    throw new Exception('顧客リストCSVをダウンロードできません');
+                    throw new Exception('座席数が足りていません');
                 }
     
                 
