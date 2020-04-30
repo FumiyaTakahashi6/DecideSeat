@@ -91,8 +91,6 @@ class MembersController extends AppController {
         return $this->redirect(['action' => 'index']);
     }
 
-
-
     public function select() {
         // メンバーデータの送信
         $this->set('members', $this->Member->find('all',[

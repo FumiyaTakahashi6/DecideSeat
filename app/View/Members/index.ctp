@@ -9,16 +9,28 @@
 </div>
 
 <div class="float-right">
-    <?php echo $this->Html->link(
-        'ユーザーの新規追加',
-        [
-            'controller' => 'members',
-            'action' => 'add'
-        ],
-        [
-            'class' => 'btn btn-info'
-        ]
-    ); ?>
+    <?php 
+        echo $this->Html->link(
+            '属性の追加',
+            [
+                'controller' => 'attributes',
+                'action' => 'add'
+            ],
+            [
+                'class' => 'btn btn-outline-secondary'
+            ]
+        ); 
+        echo $this->Html->link(
+            'ユーザーの新規追加',
+            [
+                'controller' => 'members',
+                'action' => 'add'
+            ],
+            [
+                'class' => 'btn btn-info'
+            ]
+        ); 
+    ?>
 </div>
 <table class="table table-bordered table-sm">
     <thead style="background-color:skyblue">
