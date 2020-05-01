@@ -42,8 +42,8 @@ class AppController extends Controller {
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
+                'controller' => 'members',
+                'action' => 'select',
                 'home'
             ),
             'authenticate' => array(
@@ -68,5 +68,6 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         $this->Auth->allow('select','result');
+        $this->set('auth', $this->Auth->user());
     }
 }

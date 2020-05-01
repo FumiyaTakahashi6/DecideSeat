@@ -9,7 +9,7 @@ class AttributesController extends AppController {
             $this->Attribute->create();
             if ($this->Attribute->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been saved.'));
-                return $this->redirect(array('controller' => 'members', 'action' => 'select'));
+                return $this->redirect(array('controller' => 'members', 'action' => 'index'));
             }
             $this->Flash->error(__('Unable to add your post.'));
         }

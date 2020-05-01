@@ -10,26 +10,33 @@
 
 <?php echo $this->Flash->render('auth'); ?>
 <?php echo $this->Form->create('User'); ?>
-<div>
-    <fieldset>
-        <legend>
-            <?php echo __('Please enter your username and password'); ?>
-        </legend>
-        <?php echo $this->Form->input('username',[
-            'class' => 'form-control',
-            'div' => [
-                'class' => 'form-group'
-            ],
-            'label' => 'name'
-        ]);
-        echo $this->Form->input('password',[
-            'class' => 'form-control',
-            'div' => [
-                'class' => 'form-group'
-            ],
-            'label' => 'password'
-        ]);
-    ?>
-    </fieldset>
+<div class="col-12">
+    <div class="w-50 mx-auto shadow-sm">
+        <fieldset>
+            <?php echo $this->Form->input('username',[
+                'class' => 'form-control',
+                'div' => [
+                    'class' => 'form-group'
+                ],
+                'label' => 'name'
+            ]);
+            echo $this->Form->input('password',[
+                'class' => 'form-control',
+                'div' => [
+                    'class' => 'form-group'
+                ],
+                'label' => 'password'
+            ]);
+        ?>
+        </fieldset>
+        <div class="col text-center">
+        <?php 
+            echo $this->Form->button('ログイン', [
+                'type' => 'submit',
+                'class' => 'btn btn-primary mx-auto'
+            ]);
+        ?>
+        <?= $this->Form->end(); ?>
+        </div>
+    </div>
 </div>
-<?php echo $this->Form->end(__('Login')); ?>

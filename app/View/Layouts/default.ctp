@@ -37,39 +37,57 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body style="padding-top: 55px">
+<body style="padding-top: 70px">
 	<div id="container">
 		<div id="header" class="m-0 p-0">
 			<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item active">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item nav-link active">
 							<?php echo $this->Html->link(
 								'ユーザー管理',
 								[
 									'controller' => 'members',
 									'action' => 'index'
-								],
-								[
-									'class' => "nav-link"
 								]
-								
 							); ?>
 						</li>
-						<li class="nav-item disabled">
+						<li class="nav-item nav-link">
 							<?php echo $this->Html->link(
 								'席決めアプリ',
 								[
 									'controller' => 'members',
 									'action' => 'select'
-								],
-								[
-									'class' => "nav-link"
 								]
-
 							); ?>
 						</li>
+						
 					</ul>
+					<?php if ($auth): ?>
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<?php echo $this->Html->link(
+									'ログアウト',
+									[
+										'controller' => 'users',
+										'action' => 'logout'
+									]
+								); ?>
+							</li>
+						</ul>
+					<?php else: ?>
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<?php echo $this->Html->link(
+									'ログイン',
+									[
+										'controller' => 'users',
+										'action' => 'login'
+									]
+								); ?>
+							</li>
+						</ul>
+					<?php endif; ?>
 				</div>
 			</nav>
 		</div>
