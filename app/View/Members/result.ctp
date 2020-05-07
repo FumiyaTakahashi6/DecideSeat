@@ -10,7 +10,6 @@
 </div>
 
 <?php foreach ($tables_seat_result as $index => $table_seat_result): ?>
-    
     <table class="table table-bordered table-sm" >
         <thead style="background-color:skyblue">
             <tr>

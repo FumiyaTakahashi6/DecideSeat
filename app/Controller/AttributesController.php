@@ -1,10 +1,12 @@
 <?php
 
-class AttributesController extends AppController {
+class AttributesController extends AppController
+{
     public $helpers = ['Html', 'Form', 'Flash'];
     public $components = ['Flash'];
 
-    public function add(){
+    public function add()
+    {
         if ($this->request->is('post')) {
             $this->Attribute->create();
             if ($this->Attribute->save($this->request->data)) {

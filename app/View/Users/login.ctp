@@ -30,7 +30,7 @@
         ?>
         </fieldset>
         <div class="col text-center">
-        <?php 
+        <?php
             echo $this->Form->button('ログイン', [
                 'type' => 'submit',
                 'class' => 'btn btn-primary mx-auto'

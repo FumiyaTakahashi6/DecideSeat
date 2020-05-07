@@ -1,20 +1,24 @@
 <?php
 App::uses('AppController', 'Controller');
 
-class UsersController extends AppController {
+class UsersController extends AppController
+{
 
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         parent::beforeFilter();
         // ユーザー自身による登録とログアウトを許可する
         $this->Auth->allow('add', 'logout');
     }
 
-    public function index() {
+    public function index()
+    {
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
     }
 
-    public function view($id = null) {
+    public function view($id = null)
+    {
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
@@ -38,7 +42,8 @@ class UsersController extends AppController {
         }
     }
 */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
@@ -57,7 +62,8 @@ class UsersController extends AppController {
         }
     }
 
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         // Prior to 2.5 use
         // $this->request->onlyAllow('post');
 
@@ -75,7 +81,8 @@ class UsersController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
-    public function login() {
+    public function login()
+    {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
@@ -85,8 +92,8 @@ class UsersController extends AppController {
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         $this->redirect($this->Auth->logout());
     }
-
 }

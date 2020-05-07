@@ -57,7 +57,7 @@
                     </td>
                     <td><?php echo $member['Member']['member_name']; ?></td>
                     <td>
-                        <?php 
+                        <?php
                             $genders = ['', '男性', '女性'];
                             echo $genders[$member['Member']['gender']]; 
                         ?>
@@ -71,11 +71,11 @@
                 </tr>
             <?php endforeach; ?>
             <?php unset($member); ?>
-        </table> 
+        </table>
     </div>
     <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
         <h4>テーブル設定</h4>
-        <?php 
+        <?php
             $this->log(($participants),LOG_DEBUG);
                 echo $this->Form->input('Table.table_sum', [
                     'class' => 'form-control form-control-sm',
@@ -104,14 +104,14 @@
                     <tr>
                         <td><?php echo $i + 1 ?></td>
                         <td>
-                            <?php 
+                            <?php
                                 echo $this->Form->input('Table.seat_sum.' . $i, [
                                     'class' => 'form-control form-control-sm col-sm-6',
                                     'options' => array_combine(
                                         range(0, 15),
                                         range(0, 15)
-                                    ),          
-                                    'div' => false,  
+                                    ),
+                                    'div' => false,
                                     'label' => false,
                                     'default' => $seat_sum[$i]
                                 ]);
@@ -128,13 +128,12 @@
                     <th>優先度　</th>
                     <th>属性</th>
                 </tr>
-            </thead> 
+            </thead>
             <?php for ($i = 0; $i < 5; $i++): ?>
                 <thead>
                     <tr>
                         <td><?= $i + 1; ?></td>
                         <td>
-                            
                             <?php
                             $this->log(($priority[$i]),LOG_DEBUG);
                             echo $this->Form->input('Conditions.priority.' . $i, [
@@ -148,7 +147,7 @@
                             ?>
                         </td>
                     </tr>
-                </thead> 
+                </thead>
             <?php endfor; ?>
         </table>
     </div>
