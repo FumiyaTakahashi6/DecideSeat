@@ -71,7 +71,7 @@ class PostsController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-    
+
         if ($this->Post->delete($id)) {
             $this->Flash->success(
                 __('The post with id: %s has been deleted.', h($id))
@@ -81,7 +81,7 @@ class PostsController extends AppController {
                 __('The post with id: %s could not be deleted.', h($id))
             );
         }
-    
+
         return $this->redirect(array('action' => 'index'));
     }
 
@@ -90,7 +90,7 @@ class PostsController extends AppController {
         if ($this->action === 'add') {
             return true;
         }
-    
+
         // 投稿のオーナーは編集や削除ができる
         if (in_array($this->action, array('edit', 'delete'))) {
             $postId = (int) $this->request->params['pass'][0];
@@ -98,7 +98,7 @@ class PostsController extends AppController {
                 return true;
             }
         }
-    
+
         return parent::isAuthorized($user);
     }
 }

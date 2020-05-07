@@ -5,9 +5,9 @@ class Member extends AppModel {
         'Department' => array(
             'className' => 'Department',
             'foreignKey'=> 'department_id',
-        )  
+        )
     );
-    
+
     public $hasAndBelongsToMany = array(
         'Attribute' => array(
         'className' => 'attribute',

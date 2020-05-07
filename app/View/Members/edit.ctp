@@ -27,9 +27,9 @@ echo $this->Form->input('gender', [
     'div' => [
         'class' => 'form-group col-sm-4'
     ],
-    'options' => [  
-        '1' => '男性',  
-        '2' => '女性',  
+    'options' => [
+        '1' => '男性',
+        '2' => '女性',
     ],
     'empty' => '性別を選択してください',
     'label' => '性別'

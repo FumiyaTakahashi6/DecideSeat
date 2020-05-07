@@ -61,7 +61,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 								]
 							); ?>
 						</li>
-						
 					</ul>
 					<?php if ($auth): ?>
 						<ul class="navbar-nav">
@@ -91,7 +90,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				</div>
 			</nav>
 		</div>
-		
+
 		<div id="content">
 
 			<?php echo $this->Flash->render(); ?>

@@ -9,7 +9,7 @@
 </div>
 
 <div class="float-right">
-    <?php 
+    <?php
         echo $this->Html->link(
             '属性の追加',
             [
@@ -19,7 +19,7 @@
             [
                 'class' => 'btn btn-outline-secondary'
             ]
-        ); 
+        );
         echo $this->Html->link(
             'ユーザーの新規追加',
             [
@@ -29,7 +29,7 @@
             [
                 'class' => 'btn btn-info'
             ]
-        ); 
+        );
     ?>
 </div>
 <table class="table table-bordered table-sm">
@@ -48,9 +48,9 @@
     <tr class="bg-light">
         <td><?php echo $member['Member']['member_name']; ?></td>
         <td>
-            <?php 
+            <?php
                 $genders = array('', '男性', '女性');
-                echo $genders[$member['Member']['gender']]; 
+                echo $genders[$member['Member']['gender']];
             ?>
         </td>
         <td><?php echo $member['Department']['department_name']; ?></td>
@@ -63,7 +63,7 @@
             <?php endforeach; ?>
         </td>
         <td>
-            <?php 
+            <?php
                 $years_of_employment = floor((date('Ymd') - str_replace('-', '', $member['Member']['hire_date'])) / 10000);
                 echo $years_of_employment . '年';
             ?>
