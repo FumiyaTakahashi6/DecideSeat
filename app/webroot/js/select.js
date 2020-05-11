@@ -1,19 +1,24 @@
 // TODO: 前の行をコピーして行を生成する
 function table_add(num) {
-  // 行を削除
-  table_delete();
-  if (num != ''){
-    for (i = 0; i < Number(num); i++) {
-      let table = document.getElementById("table");
-      // 行を行末に追加
-      let row = table.insertRow(-1);
-      //alert(table.insertRow(-1));
-      //td分追加
-      let cell1 = row.insertCell(-1);
-      let cell2 = row.insertCell(-1);
-      // セルの内容入力
-      cell1.innerHTML = i + 1;
-      cell2.innerHTML = `<select name="data[Table][seat_sum][` + i + `]" class="form-control form-control-sm col-sm-6" id="TableSeatSum` + i + `">
+	// 行を削除
+	table_delete();
+	if (num != "") {
+		for (i = 0; i < Number(num); i++) {
+			let table = document.getElementById("table");
+			// 行を行末に追加
+			let row = table.insertRow(-1);
+			//alert(table.insertRow(-1));
+			//td分追加
+			let cell1 = row.insertCell(-1);
+			let cell2 = row.insertCell(-1);
+			// セルの内容入力
+			cell1.innerHTML = i + 1;
+			cell2.innerHTML =
+				`<select name="data[Table][seat_sum][` +
+				i +
+				`]" class="form-control form-control-sm col-sm-6" id="TableSeatSum` +
+				i +
+				`">
             <option value="0" selected="selected">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -31,22 +36,34 @@ function table_add(num) {
             <option value="14">14</option>
             <option value="15">15</option>
             </select>`;
-    }
-  }
+		}
+	}
 }
 
 function table_delete() {
-  let table = document.getElementById("table");
-  let rowLen = table.rows.length;
-  //上の行から削除していくと下の行がずれていくので下から検査
-  for (i = rowLen-1; i > 0; i--) {
-      table.deleteRow(i);
-  }
+	let table = document.getElementById("table");
+	let rowLen = table.rows.length;
+	//上の行から削除していくと下の行がずれていくので下から検査
+	for (i = rowLen - 1; i > 0; i--) {
+		table.deleteRow(i);
+	}
 }
 
-$(window).load(function(){
-  $('input:checkbox').change(function() {
-      let cnt = $('#participant_table input:checkbox:checked').length;
-      $('.tohokuret').text('参加人数： ' + cnt + '　人');
-  }).trigger('change');
+$(window).load(function () {
+	$("input:checkbox")
+		.change(function () {
+			let cnt = $("#participant_table input:checkbox:checked").length;
+			$(".tohokuret").text("参加人数： " + cnt + "　人");
+		})
+		.trigger("change");
+
+	$("#table select")
+		.change(function () {
+			let seat_count = 0;
+			$("#table select").each(function () {
+				seat_count = seat_count + Number($(this).val());
+			});
+			$(".tohokuret2").text("座席数： " + seat_count + "　人");
+		})
+		.trigger("change");
 });

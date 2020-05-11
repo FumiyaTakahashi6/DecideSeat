@@ -12,6 +12,7 @@
 </div>
 
 <p class="tohokuret"></p>
+<p class="tohokuret2"></p>
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true">参加者設定</a>
@@ -55,17 +56,17 @@
                         ]);
                         ?>
                     </td>
-                    <td><?php echo $member['Member']['member_name']; ?></td>
+                    <td><?= h($member['Member']['member_name']); ?></td>
                     <td>
                         <?php
                             $genders = ['', '男性', '女性'];
-                            echo $genders[$member['Member']['gender']]; 
+                            echo h($genders[$member['Member']['gender']]);
                         ?>
                     </td>
-                    <td><?php echo $member['Department']['department_name']; ?></td>
+                    <td><?= h($member['Department']['department_name']); ?></td>
                     <td>
                         <?php foreach ($member['Attribute'] as $attribute): ?>
-                            <?php echo $attribute['attribute_name']; ?>
+                            <?= h($attribute['attribute_name']); ?>
                         <?php endforeach; ?>
                     </td>
                 </tr>
@@ -76,7 +77,6 @@
     <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
         <h4>テーブル設定</h4>
         <?php
-            $this->log(($participants),LOG_DEBUG);
                 echo $this->Form->input('Table.table_sum', [
                     'class' => 'form-control form-control-sm',
                     'div' => [

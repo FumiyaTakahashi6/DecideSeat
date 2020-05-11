@@ -21,6 +21,16 @@
             ]
         );
         echo $this->Html->link(
+            '属性の削除',
+            [
+                'controller' => 'attributes',
+                'action' => 'delete'
+            ],
+            [
+                'class' => 'btn btn-outline-secondary'
+            ]
+        );
+        echo $this->Html->link(
             'ユーザーの新規追加',
             [
                 'controller' => 'members',
@@ -46,26 +56,24 @@
     </thead>
     <?php foreach ($members as $member): ?>
     <tr class="bg-light">
-        <td><?php echo $member['Member']['member_name']; ?></td>
+        <td><?= h($member['Member']['member_name']); ?></td>
         <td>
             <?php
                 $genders = array('', '男性', '女性');
-                echo $genders[$member['Member']['gender']];
+                echo h($genders[$member['Member']['gender']]);
             ?>
         </td>
-        <td><?php echo $member['Department']['department_name']; ?></td>
-        <td>
-            <?php echo $member['Member']['birthday']; ?>
-        </td>
+        <td><?= h($member['Department']['department_name']); ?></td>
+        <td><?= h($member['Member']['birthday']); ?></td>
         <td>
             <?php foreach ($member['Attribute'] as $attribute): ?>
-                <?php echo $attribute['attribute_name']; ?>
+                <?= h($attribute['attribute_name']); ?>
             <?php endforeach; ?>
         </td>
         <td>
             <?php
                 $years_of_employment = floor((date('Ymd') - str_replace('-', '', $member['Member']['hire_date'])) / 10000);
-                echo $years_of_employment . '年';
+                echo h($years_of_employment) . '年';
             ?>
         </td>
         <td>
