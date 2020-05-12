@@ -4,7 +4,7 @@
 
 <div class="w-100 p-3 ">
     <div class="w-100 p-2 border-bottom">
-        <h3>属性の追加</h3>
+        <h3>属性の編集</h3>
     </div>
 </div>
 
@@ -18,14 +18,12 @@ echo $this->Form->input('attribute_name',[
     ],
     'label' => '属性の名前'
 ]);
-/*
-echo $this->Form->input('Member', [
-    'type' => 'select',
-    'multiple'=> 'checkbox',
-    'options' => $members,
-]);
-*/
 
+// echo $this->Form->input('Member', [
+//     'type' => 'select',
+//     'multiple'=> 'checkbox',
+//     'options' => $members,
+// ]);
 ?>
 <table class="table table-bordered table-sm　bg-light" id="participant_table" >
             <thead style="background-color:skyblue">
@@ -41,10 +39,16 @@ echo $this->Form->input('Member', [
                 <tr>
                     <td>
                         <?php
+                            if (in_array($member['Member']['id'], $members_attributes)) {
+                                $checked = true;
+                            } else {
+                                $checked = false;
+                            }
                             echo $this->Form->input('Member.'. $index, [
                                 'type' => 'checkbox',
                                 'value' => $member['Member']['id'],
                                 'hiddenField' => false,
+                                'checked' => $checked,
                                 'label' => false,
                         ]);
                         ?>
@@ -68,5 +72,5 @@ echo $this->Form->input('Member', [
         </table>
 <?php
 
-echo $this->Form->end('追加');
+echo $this->Form->end('変更');
 ?>

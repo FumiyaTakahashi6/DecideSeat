@@ -33,7 +33,6 @@
     <?php echo $this->Html->link(
         '再設定',
         [
-            'controller' => 'members',
             'action' => 'select'
         ],
         [

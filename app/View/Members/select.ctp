@@ -135,7 +135,6 @@
                         <td><?= $i + 1; ?></td>
                         <td>
                             <?php
-                            $this->log(($priority[$i]),LOG_DEBUG);
                             echo $this->Form->input('Conditions.priority.' . $i, [
                                 'class' => 'form-control form-control-sm col-sm-6',
                                 'options' => $attributes + $attributes_group,

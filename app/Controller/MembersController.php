@@ -28,7 +28,7 @@ class MembersController extends AppController
 
         if ($this->request->is('post')) {
             $this->Member->create();
-            // $this->log(($this->request->data),LOG_DEBUG);
+            // $this->log(($this->request->data), LOG_DEBUG);
             // debug($this->request->data);
             if ($this->Member->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been saved.'));
@@ -44,7 +44,6 @@ class MembersController extends AppController
             throw new NotFoundException(__('Invalid'));
         }
         $member = $this->Member->findById($id);
-        //$this->log($member,LOG_DEBUG);
 
         if (!$member) {
             throw new NotFoundException(__('Invalid'));
@@ -64,6 +63,7 @@ class MembersController extends AppController
 
         if ($this->request->is(['post', 'put'])) {
             $this->Member->id = $id;
+            $this->log(($this->request->data), LOG_DEBUG);
             if ($this->Member->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been updated.'));
                 return $this->redirect(['action' => 'index']);
@@ -141,7 +141,7 @@ class MembersController extends AppController
 
             // エラー処理
             try {
-                if ($this->request->data['Participants'] == null) {
+                if (empty($this->request->data['Participants'])) {
                     $this->Flash->error(__('参加者が設定されていません'));
                     throw new Exception('参加者が設定されていません');
                 }

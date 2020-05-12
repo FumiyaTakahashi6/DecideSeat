@@ -11,25 +11,16 @@
 <div class="float-right">
     <?php
         echo $this->Html->link(
-            '属性の追加',
+            '属性の編集',
             [
                 'controller' => 'attributes',
-                'action' => 'add'
+                'action' => 'index'
             ],
             [
                 'class' => 'btn btn-outline-secondary'
             ]
         );
-        echo $this->Html->link(
-            '属性の削除',
-            [
-                'controller' => 'attributes',
-                'action' => 'delete'
-            ],
-            [
-                'class' => 'btn btn-outline-secondary'
-            ]
-        );
+
         echo $this->Html->link(
             'ユーザーの新規追加',
             [
