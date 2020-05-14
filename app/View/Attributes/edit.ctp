@@ -19,11 +19,6 @@ echo $this->Form->input('attribute_name',[
     'label' => '属性の名前'
 ]);
 
-// echo $this->Form->input('Member', [
-//     'type' => 'select',
-//     'multiple'=> 'checkbox',
-//     'options' => $members,
-// ]);
 ?>
 <table class="table table-bordered table-sm　bg-light" id="participant_table" >
             <thead style="background-color:skyblue">

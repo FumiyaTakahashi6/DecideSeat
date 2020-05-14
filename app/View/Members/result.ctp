@@ -4,40 +4,44 @@
 <?= $this->Html->script('https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js') ?>
 <?= $this->Html->script('result', array('inline' => true)); ?>
 
-<div class="w-100 p-3 ">
-    <div class="w-100 p-2 border-bottom">
-        <h3>席決め結果</h3>
+<div class="py-3">
+    <h3 class="border-bottom">席決め結果</h3>
+</div>
+<div class="row justify-content-center">
+    <div id="result" class="row col-sm-8 m-0 bg-white border">
+        <?php foreach ($tables_seat_result as $index => $table_seat_result): ?>
+            <div class="col-sm-3">
+                <table class="table table-bordered table-sm bg-white" style="margin-top: 1rem; word-break: break-all;">
+                    <thead style="background: #f1f1f1">
+                        <tr>
+                            <th><?= 'テーブル' . ($index + 1) ?></th>
+                        </tr>
+                    </thead>
+                    <?php foreach ($table_seat_result as $seat_result): ?>
+                        <thead>
+                            <tr>
+                                <td><?= h($seat_result) ?></td>
+                            </tr>
+                        </thead>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
-<div id="result">
-    <?php foreach ($tables_seat_result as $index => $table_seat_result): ?>
-        <table class="table table-bordered table-sm" >
-            <thead style="background-color:skyblue">
-                <tr>
-                    <th><?php echo 'テーブル' . ($index + 1) ?></th>
-                </tr>
-            </thead>
-            <?php foreach ($table_seat_result as $seat_result): ?>
-                <thead class = "bg-light">
-                    <tr>
-                        <td>
-                            <?= h($seat_result) ?>
-                        </td>
-                    </tr>
-                </thead>
-            <?php endforeach; ?>
-        </table>
-    <?php endforeach; ?>
-</div>
-<div class="float-right">
-    <?php echo $this->Html->link(
-        '再設定',
-        [
-            'action' => 'select'
-        ],
-        [
-            'class' => 'btn btn-danger'
-        ]
-    ); ?>
-    <button id="saveImage" class="btn btn-success" type="button">結果を保存</button>
+<div class="row justify-content-center py-3">
+    <div class="col-sm-8 p-0">
+        <div class="float-right">
+            <?php echo $this->Html->link(
+                '再設定',
+                [
+                    'action' => 'select'
+                ],
+                [
+                    'class' => 'btn btn-danger'
+                ]
+            ); ?>
+            <button id="saveImage" class="btn btn-success" type="button">結果を保存</button>
+        </div>
+    </div>
 </div>

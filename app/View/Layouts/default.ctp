@@ -37,7 +37,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body style="padding-top: 70px">
+<body style="padding-top: 55px">
 	<div id="container">
 		<div id="header" class="m-0 p-0">
 			<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">

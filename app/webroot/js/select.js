@@ -4,7 +4,7 @@ function table_add(num) {
 	table_delete();
 	if (num != "") {
 		for (i = 0; i < Number(num); i++) {
-			let table = document.getElementById("table");
+			let table = document.getElementById("seat_table");
 			// 行を行末に追加
 			let row = table.insertRow(-1);
 			//alert(table.insertRow(-1));
@@ -34,14 +34,19 @@ function table_add(num) {
             <option value="12">12</option>
             <option value="13">13</option>
             <option value="14">14</option>
-            <option value="15">15</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
             </select>`;
 		}
 	}
 }
 
 function table_delete() {
-	let table = document.getElementById("table");
+	let table = document.getElementById("seat_table");
 	let rowLen = table.rows.length;
 	//上の行から削除していくと下の行がずれていくので下から検査
 	for (i = rowLen - 1; i > 0; i--) {
@@ -54,16 +59,37 @@ $(window).load(function () {
 		.change(function () {
 			let cnt = $("#participant_table input:checkbox:checked").length;
 			$(".tohokuret").text("参加人数： " + cnt + "　人");
+			aaaa();
 		})
 		.trigger("change");
 
-	$("#table select")
+	$("#table_setting")
 		.change(function () {
 			let seat_count = 0;
-			$("#table select").each(function () {
+			$("#seat_table select").each(function () {
 				seat_count = seat_count + Number($(this).val());
 			});
 			$(".tohokuret2").text("座席数： " + seat_count + "　人");
+			aaaa();
 		})
 		.trigger("change");
 });
+
+function aaaa() {
+	let cnt = $("#participant_table input:checkbox:checked").length;
+	let seat_count = 0;
+	$("#seat_table select").each(function () {
+		seat_count = seat_count + Number($(this).val());
+	});
+	if (cnt == 0 && seat_count == 0) {
+		$(".tohokuret3").text("※参加者と座席が設定されていません");
+	} else if (cnt == 0) {
+		$(".tohokuret3").text("※参加者が設定されていません");
+	} else if (seat_count == 0) {
+		$(".tohokuret3").text("※座席が設定されていません");
+	} else if (cnt > seat_count) {
+		$(".tohokuret3").text("※座席数が足りていません");
+	} else {
+		$(".tohokuret3").text("");
+	}
+}
