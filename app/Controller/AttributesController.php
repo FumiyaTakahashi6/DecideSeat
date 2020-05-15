@@ -1,5 +1,4 @@
 <?php
-
 class AttributesController extends AppController
 {
     public $helpers = ['Html', 'Form', 'Flash'];
