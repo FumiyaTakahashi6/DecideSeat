@@ -6,17 +6,27 @@ class AttributesController extends AppController
 
     public function index()
     {
-        $this->set('attributes', $this->Attribute->find('all', [
-            'order' => array('Attribute.id ASC')
-        ]));
+        $this->set(
+            'attributes',
+            $this->Attribute->find(
+                'all', [
+                'order' => array('Attribute.id ASC')
+                ]
+            )
+        );
     }
 
     public function add()
     {
         $this->loadModel('Member');
-        $this->set('members', $this->Member->find('all', [
-            'order' => array('Member.id ASC'),
-        ]));
+        $this->set(
+            'members',
+            $this->Member->find(
+                'all', [
+                'order' => array('Member.id ASC'),
+                ]
+            )
+        );
 
         if ($this->request->is('post')) {
             $this->Attribute->create();
@@ -37,20 +47,27 @@ class AttributesController extends AppController
         if (!$attribute) {
             throw new NotFoundException(__('Invalid'));
         }
-        // $this->set('attribute', $this->Attribute->find('all', [
-        //     'conditions' => array('Attribute.id' => $id),
-        // ]));
-
-        $this->loadModel('Members_attribute');
-        $this->set('members_attributes', $this->Members_attribute->find('list', [
-            'conditions' => array('Members_attribute.attribute_id' => $id),
-            'fields' => 'Members_attribute.member_id'
-        ]));
 
         $this->loadModel('Member');
-        $this->set('members', $this->Member->find('all', [
-            'order' => array('Member.id ASC'),
-        ]));
+        $this->set(
+            'members',
+            $this->Member->find(
+                'all', [
+                'order' => array('Member.id ASC'),
+                ]
+            )
+        );
+
+        $this->loadModel('Members_attribute');
+        $this->set(
+            'members_attributes',
+            $this->Members_attribute->find(
+                'list', [
+                'conditions' => array('Members_attribute.attribute_id' => $id),
+                'fields' => 'Members_attribute.member_id'
+                ]
+            )
+        );
 
         if ($this->request->is(['post', 'put'])) {
             $this->Attribute->id = $id;
@@ -88,22 +105,5 @@ class AttributesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-    // public function delete()
-    // {
-    //     $this->set('attributes', $this->Attribute->find('list', [
-    //         'order' => 'Attribute.id ASC',
-    //         'fields' => 'Attribute.attribute_name'
-    //     ]));
-
-    //     if ($this->request->is('post')) {
-    //         if (!empty($this->request->data['Attribute']['id'])) {
-    //             if ($this->Attribute->deleteAll(['Attribute.id' => $this->request->data['Attribute']['id']])) {
-    //                 $this->Flash->success(__('Your post has been saved.'));
-    //                 return $this->redirect(array('controller' => 'members', 'action' => 'index'));
-    //             }
-    //         }
-    //         $this->Flash->error(__('Unable to add your post.'));
-    //     }
-    // }
 }
+

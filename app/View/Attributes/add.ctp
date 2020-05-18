@@ -74,8 +74,7 @@
                     <?php unset($member); ?>
                 </table>
             <?php
-
-            echo $this->Form->end('追加');
+                echo $this->Form->end('追加');
             ?>
         </div>
     </div>

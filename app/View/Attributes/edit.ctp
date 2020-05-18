@@ -75,10 +75,9 @@
                             <?php endforeach; ?>
                         </td>
                     </tr>
-                <?php endforeach; ?>
-                <?php unset($member); ?>
-            </table>
-
+                    <?php endforeach; ?>
+                    <?php unset($member); ?>
+                </table>
             <?php
                 echo $this->Form->end('変更');
             ?>
