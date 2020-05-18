@@ -43,21 +43,21 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item nav-link active">
-							<?php echo $this->Html->link(
-								'ユーザー管理',
-								[
-									'controller' => 'members',
-									'action' => 'index'
-								]
-							); ?>
-						</li>
 						<li class="nav-item nav-link">
 							<?php echo $this->Html->link(
 								'席決めアプリ',
 								[
 									'controller' => 'members',
 									'action' => 'select'
+								]
+							); ?>
+						</li>
+						<li class="nav-item nav-link active">
+							<?php echo $this->Html->link(
+								'ユーザー管理',
+								[
+									'controller' => 'members',
+									'action' => 'index'
 								]
 							); ?>
 						</li>
