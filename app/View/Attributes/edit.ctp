@@ -37,9 +37,9 @@
                 <thead style="background-color: #f1f1f1">
                     <tr>
                         <th style="width: 10%">選択</th>
-                        <th style="width: 30%">名前</th>
-                        <th style="width: 15%">性別</th>
-                        <th style="width: 15%">部署</th>
+                        <th style="width: 25%">名前</th>
+                        <th style="width: 12%">性別</th>
+                        <th style="width: 23%">部署</th>
                         <th style="width: 30%">属性</th>
                     </tr>
                 </thead>

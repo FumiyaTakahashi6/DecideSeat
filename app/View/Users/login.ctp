@@ -12,7 +12,7 @@
     <div class="row justify-content-center col-sm-5 bg-white border">
         <div class="col-sm-10">
             <div class="text-center">
-                <h2>Sign In</h2>
+                <h2 class="text-dark">Sign In</h2>
             </div>
             <fieldset>
                 <?php

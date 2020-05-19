@@ -42,10 +42,10 @@
                 <table class="table table-bordered table-sm bg-white" style="word-break: break-all;">
                     <thead style="background-color: #f1f1f1">
                         <tr>
-                            <th style="width: 20%">名前</th>
-                            <th style="width: 10%">性別</th>
-                            <th style="width: 10%">部署</th>
-                            <th style="width: 10%">生年月日</th>
+                            <th style="width: 18%">名前</th>
+                            <th style="width: 5%">性別</th>
+                            <th style="width: 15%">部署</th>
+                            <th style="width: 12%">生年月日</th>
                             <th style="width: 20%">属性</th>
                             <th style="width: 10%">入社年数</th>
                             <th style="width: 20%"></th>
