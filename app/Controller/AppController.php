@@ -37,6 +37,7 @@ class AppController extends Controller
         'DebugKit.Toolbar',
         'Flash',
         'Session',
+        'Security',
         'Auth' => array(
             'loginRedirect' => array(
                 'controller' => 'members',
@@ -66,10 +67,19 @@ class AppController extends Controller
         return false;
     }
 
-
     public function beforeFilter()
     {
         $this->Auth->allow('select', 'result');
         $this->set('auth', $this->Auth->user());
+
+        if (!Configure::read('debug')) {
+            $this->Security->blackHoleCallback = 'forceSecure';
+            $this->Security->requireSecure();
+        }
+    }
+
+    public function forceSecure()
+    {
+        $this->redirect("https://" . env('SERVER_NAME') . $this->here);
     }
 }
