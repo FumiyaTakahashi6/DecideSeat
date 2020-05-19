@@ -18,6 +18,7 @@ class AttributesController extends AppController
 
     public function add()
     {
+        $this->loadModel('Attribute');
         $this->loadModel('Member');
         $this->set(
             'members',
@@ -40,6 +41,7 @@ class AttributesController extends AppController
 
     public function edit($id = null)
     {
+        $this->loadModel('Member');
         if (!$id) {
             throw new NotFoundException(__('Invalid'));
         }
@@ -48,7 +50,6 @@ class AttributesController extends AppController
             throw new NotFoundException(__('Invalid'));
         }
 
-        $this->loadModel('Member');
         $this->set(
             'members',
             $this->Member->find(
@@ -73,7 +74,6 @@ class AttributesController extends AppController
             $this->Attribute->id = $id;
             if (empty($this->request->data['Member'])) {
                 $this->request->data['Member'] = [];
-                $this->log(($this->request->data), LOG_DEBUG);
             }
             if ($this->Attribute->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been updated.'));
