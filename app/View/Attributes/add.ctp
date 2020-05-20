@@ -2,6 +2,7 @@
 <?= $this->Html->script('https://code.jquery.com/jquery-2.2.4.min.js'); ?>
 <?= $this->Html->script('bootstrap.min.js') ?>
 
+<?php $this->assign('title', '属性の追加'); ?>
 <div class="py-3">
     <h3 class="border-bottom">属性の追加</h3>
 </div>

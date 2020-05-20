@@ -6,6 +6,7 @@
 <?= $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js') ?>
 <?= $this->Html->script('add', array('inline' => true)); ?>
 
+<?php $this->assign('title', 'ユーザーの追加'); ?>
 <div class="py-3">
     <h3 class="border-bottom">ユーザーの追加</h3>
 </div>

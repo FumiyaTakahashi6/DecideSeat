@@ -4,6 +4,7 @@
 <?php echo $this->Html->css('select.css');?>
 <?php echo $this->Html->script('select', array('inline' => true)); ?>
 
+<?php $this->assign('title', '席決め設定'); ?>
 <div class="py-3">
     <h3 class="border-bottom">席決め設定</h3>
 </div>

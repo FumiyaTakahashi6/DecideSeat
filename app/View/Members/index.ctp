@@ -2,8 +2,9 @@
 <?= $this->Html->script('https://code.jquery.com/jquery-2.2.4.min.js'); ?>
 <?= $this->Html->script('bootstrap.min.js') ?>
 
+<?php $this->assign('title', 'ユーザ一覧'); ?>
 <div class="py-3">
-    <h3 class="border-bottom">ユーザ一覧</h3>
+    <h3 class="border-bottom">ユーザ一ー覧</h3>
 </div>
 <div class="row justify-content-center">
     <div class="col-sm-9">

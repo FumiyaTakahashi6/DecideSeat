@@ -4,6 +4,7 @@
 <?= $this->Html->script('https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js') ?>
 <?= $this->Html->script('result', array('inline' => true)); ?>
 
+<?php $this->assign('title', '席決め結果'); ?>
 <div class="py-3">
     <h3 class="border-bottom">席決め結果</h3>
 </div>

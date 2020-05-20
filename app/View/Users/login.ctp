@@ -2,6 +2,7 @@
 <?= $this->Html->script('https://code.jquery.com/jquery-2.2.4.min.js'); ?>
 <?= $this->Html->script('bootstrap.min.js') ?>
 
+<?php $this->assign('title', 'ログイン'); ?>
 <div class="py-3">
     <h3 class="border-bottom">ログイン</h3>
 </div>
