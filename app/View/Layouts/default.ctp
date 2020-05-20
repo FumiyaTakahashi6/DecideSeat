@@ -15,7 +15,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', '席決めアプリ:');
+$cakeDescription = __d('cake_dev', '席決めアプリ');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
