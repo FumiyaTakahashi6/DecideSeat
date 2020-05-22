@@ -4,13 +4,12 @@ function table_add(num) {
 	table_delete();
 	if (num != "") {
 		for (i = 0; i < Number(num); i++) {
-			let table = document.getElementById("seat_table");
+			const table = document.getElementById("seat_table");
 			// 行を行末に追加
-			let row = table.insertRow(-1);
-			//alert(table.insertRow(-1));
+			const row = table.insertRow(-1);
 			//td分追加
-			let cell1 = row.insertCell(-1);
-			let cell2 = row.insertCell(-1);
+			const cell1 = row.insertCell(-1);
+			const cell2 = row.insertCell(-1);
 			// セルの内容入力
 			cell1.innerHTML = i + 1;
 			cell2.innerHTML =
@@ -46,8 +45,8 @@ function table_add(num) {
 }
 
 function table_delete() {
-	let table = document.getElementById("seat_table");
-	let rowLen = table.rows.length;
+	const table = document.getElementById("seat_table");
+	const rowLen = table.rows.length;
 	//上の行から削除していくと下の行がずれていくので下から検査
 	for (i = rowLen - 1; i > 0; i--) {
 		table.deleteRow(i);
@@ -57,9 +56,10 @@ function table_delete() {
 $(window).load(function () {
 	$("input:checkbox")
 		.change(function () {
-			let cnt = $("#participant_table input:checkbox:checked").length;
-			$(".tohokuret").text("参加人数： " + cnt + "　人");
-			aaaa();
+			const participant_count = $("#participant_table input:checkbox:checked")
+				.length;
+			$(".tohokuret").text("参加人数： " + participant_count + "　人");
+			settings_check();
 		})
 		.trigger("change");
 
@@ -70,24 +70,25 @@ $(window).load(function () {
 				seat_count = seat_count + Number($(this).val());
 			});
 			$(".tohokuret2").text("座席数： " + seat_count + "　人");
-			aaaa();
+			settings_check();
 		})
 		.trigger("change");
 });
 
-function aaaa() {
-	let cnt = $("#participant_table input:checkbox:checked").length;
+function settings_check() {
+	const participant_count = $("#participant_table input:checkbox:checked")
+		.length;
 	let seat_count = 0;
 	$("#seat_table select").each(function () {
 		seat_count = seat_count + Number($(this).val());
 	});
-	if (cnt == 0 && seat_count == 0) {
+	if (participant_count == 0 && seat_count == 0) {
 		$(".tohokuret3").text("※参加者と座席が設定されていません");
-	} else if (cnt == 0) {
+	} else if (participant_count == 0) {
 		$(".tohokuret3").text("※参加者が設定されていません");
 	} else if (seat_count == 0) {
 		$(".tohokuret3").text("※座席が設定されていません");
-	} else if (cnt > seat_count) {
+	} else if (participant_count > seat_count) {
 		$(".tohokuret3").text("※座席数が足りていません");
 	} else {
 		$(".tohokuret3").text("");

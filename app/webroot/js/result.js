@@ -1,5 +1,5 @@
-var flag = false;
-var name = null;
+let flag = false;
+let name = null;
 
 $(document).ready(function () {
 	$(".table td").on("click", function () {
@@ -28,7 +28,7 @@ $(document).ready(function () {
 
 	$("#saveImage").on("click", function () {
 		html2canvas(document.querySelector("#result")).then((canvas) => {
-			let downloadEle = document.createElement("a");
+			downloadEle = document.createElement("a");
 			downloadEle.href = canvas.toDataURL("image/png");
 			downloadEle.download = "result.png";
 			downloadEle.click();
