@@ -1,5 +1,4 @@
 <?php
-
 class MembersController extends AppController
 {
     public $helpers = ['Html', 'Form', 'Flash'];
@@ -7,9 +6,14 @@ class MembersController extends AppController
 
     public function index()
     {
-        $this->set('members', $this->Member->find('all', [
-            'order' => array('Member.id ASC')
-        ]));
+        $this->set(
+            'members',
+            $this->Member->find(
+                'all', [
+                    'order' => array('Member.id ASC')
+                ]
+            )
+        );
     }
 
     // ユーザーの追加
@@ -17,19 +21,27 @@ class MembersController extends AppController
     {
         // 部署データ
         $this->loadModel('Department');
-        $this->set('departments', $this->Department->find('list', [
-            'fields' => 'Department.department_name'
-        ]));
+        $this->set(
+            'departments',
+            $this->Department->find(
+                'list', [
+                    'fields' => 'Department.department_name'
+                ]
+            )
+        );
         // 属性データ
         $this->loadModel('Attribute');
-        $this->set('attributes', $this->Attribute->find('list', [
-            'fields' => 'Attribute.attribute_name'
-        ]));
+        $this->set(
+            'attributes',
+            $this->Attribute->find(
+                'list', [
+                    'fields' => 'Attribute.attribute_name'
+                ]
+            )
+        );
 
         if ($this->request->is('post')) {
             $this->Member->create();
-            // $this->log(($this->request->data), LOG_DEBUG);
-            // debug($this->request->data);
             if ($this->Member->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been saved.'));
                 return $this->redirect(array('action' => 'index'));
@@ -51,15 +63,25 @@ class MembersController extends AppController
 
         // 部署データ
         $this->loadModel('Department');
-        $this->set('departments', $this->Department->find('list', [
-            'fields' => 'Department.department_name'
-        ]));
+        $this->set(
+            'departments',
+            $this->Department->find(
+                'list', [
+                    'fields' => 'Department.department_name'
+                ]
+            )
+        );
 
         // 属性データ
         $this->loadModel('Attribute');
-        $this->set('attributes', $this->Attribute->find('list', [
-            'fields' => 'Attribute.attribute_name'
-        ]));
+        $this->set(
+            'attributes',
+            $this->Attribute->find(
+                'list', [
+                    'fields' => 'Attribute.attribute_name'
+                ]
+            )
+        );
 
         if ($this->request->is(['post', 'put'])) {
             $this->Member->id = $id;
@@ -98,20 +120,32 @@ class MembersController extends AppController
     public function select()
     {
         // メンバーデータの送信
-        $this->set('members', $this->Member->find('all', [
-            'order' => array('Member.id ASC')
-        ]));
+        $this->set(
+            'members',
+            $this->Member->find(
+                'all', [
+                    'order' => array('Member.id ASC')
+                ]
+            )
+        );
 
         // 属性データの送信
         $this->loadModel('Attribute');
-        $this->set('attributes', $this->Attribute->find('list', [
-            'fields' => 'Attribute.attribute_name'
-        ]));
+        $this->set(
+            'attributes',
+            $this->Attribute->find(
+                'list', [
+                    'fields' => 'Attribute.attribute_name'
+                ]
+            )
+        );
 
         // 属性グループデータの送信
-        $this->set('attributes_group', [
-            '部署' => '部署'
-        ]);
+        $this->set(
+            'attributes_group', [
+                '部署' => '部署'
+            ]
+        );
 
         if ($this->request->is('post')) {
             $this->Session->delete('Participants');
@@ -151,18 +185,21 @@ class MembersController extends AppController
                     throw new Exception('テーブルが設定されていません');
                 }
 
-                if (count($this->request->data['Participants']) > array_sum($this->request->data['Table']['seat_sum'])
-                    && $this->request->data['Table']['table_sum'] != null) {
+                if (count($this->request->data['Participants']) > array_sum($this->request->data['Table']['seat_sum']) && $this->request->data['Table']['table_sum'] != null) {
                     $this->Flash->error(__('座席数が足りていません'));
                     throw new Exception('座席数が足りていません');
                 }
 
                 // 参加者データの取得
                 $participants_id = $this->request->data['Participants'];
-                $participants = $this->Member->find('all', [
-                    'conditions'=>array('Member.id'=> $participants_id),
-                    'order' => 'RAND()'
-                ]);
+                $participants = $this->Member->find(
+                    'all', [
+                        'conditions' => [
+                            'Member.id'=> $participants_id
+                        ],
+                        'order' => 'RAND()'
+                    ]
+                );
 
                 // 座席データの取得
                 $table_sum = $this->request->data['Table']['table_sum'];
@@ -173,10 +210,12 @@ class MembersController extends AppController
 
                 //  部署データの取得
                 $this->loadModel('Department');
-                $departments_id = $this->Department->find('list', [
-                    'fields' => 'Department.id',
-                    'order' => 'RAND()'
-                ]);
+                $departments_id = $this->Department->find(
+                    'list', [
+                        'fields' => 'Department.id',
+                        'order' => 'RAND()'
+                    ]
+                );
 
                 // 優先度順に並び替える
                 // 優先度順にソートしたデータを格納
@@ -270,7 +309,7 @@ class MembersController extends AppController
                 $this->set('tables_seat_result', $tables_seat_result);
                 $this->render('result');
             } catch (Exception $e) {
-                echo $e->getMessage();
+                // echo $e->getMessage();
             }
         }
 
