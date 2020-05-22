@@ -116,8 +116,8 @@
                                             echo $this->Form->input('Table.seat_sum.' . $i, [
                                                 'class' => 'form-control form-control-sm col-sm-6',
                                                 'options' => array_combine(
-                                                    range(0, 15),
-                                                    range(0, 15)
+                                                    range(0, 20),
+                                                    range(0, 20)
                                                 ),
                                                 'div' => false,
                                                 'label' => false,
