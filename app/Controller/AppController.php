@@ -72,8 +72,10 @@ class AppController extends Controller
         $this->Auth->allow('select', 'result');
         $this->set('auth', $this->Auth->user());
 
-        $this->Security->blackHoleCallback = 'forceSecure';
-        $this->Security->requireSecure();
+        if (!Configure::read('debug')) {
+            $this->Security->blackHoleCallback = 'forceSecure';
+            $this->Security->requireSecure();
+        }
     }
 
     public function forceSecure()
