@@ -11,7 +11,7 @@ class AttributesController extends AppController
             'attributes',
             $this->Attribute->find(
                 'all', [
-                'order' => array('Attribute.id ASC')
+                'order' => ['Attribute.id ASC']
                 ]
             )
         );
@@ -23,7 +23,7 @@ class AttributesController extends AppController
             'members',
             $this->Member->find(
                 'all', [
-                'order' => array('Member.id ASC'),
+                'order' => ['Member.id ASC'],
                 ]
             )
         );
@@ -32,7 +32,7 @@ class AttributesController extends AppController
             $this->Attribute->create();
             if ($this->Attribute->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been saved.'));
-                return $this->redirect(array('controller' => 'attributes', 'action' => 'index'));
+                return $this->redirect(['controller' => 'attributes', 'action' => 'index']);
             }
             $this->Flash->error(__('Unable to add your post.'));
         }
@@ -52,7 +52,7 @@ class AttributesController extends AppController
             'members',
             $this->Member->find(
                 'all', [
-                'order' => array('Member.id ASC'),
+                'order' => ['Member.id ASC'],
                 ]
             )
         );
@@ -61,7 +61,7 @@ class AttributesController extends AppController
             'members_attributes',
             $this->Members_attribute->find(
                 'list', [
-                'conditions' => array('Members_attribute.attribute_id' => $id),
+                'conditions' => ['Members_attribute.attribute_id' => $id],
                 'fields' => 'Members_attribute.member_id'
                 ]
             )

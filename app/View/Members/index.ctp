@@ -57,7 +57,7 @@
                         <td><?= h($member['Member']['member_name']); ?></td>
                         <td>
                             <?php
-                                $genders = array('', '男性', '女性');
+                                $genders = ['', '男性', '女性'];
                                 echo h($genders[$member['Member']['gender']]);
                             ?>
                         </td>

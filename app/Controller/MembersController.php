@@ -11,7 +11,7 @@ class MembersController extends AppController
             'members',
             $this->Member->find(
                 'all', [
-                    'order' => array('Member.id ASC')
+                    'order' => ['Member.id ASC']
                 ]
             )
         );
@@ -43,7 +43,7 @@ class MembersController extends AppController
             $this->Member->create();
             if ($this->Member->save($this->request->data)) {
                 $this->Flash->success(__('Your post has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('Unable to add your post.'));
         }
@@ -121,7 +121,7 @@ class MembersController extends AppController
             'members',
             $this->Member->find(
                 'all', [
-                    'order' => array('Member.id ASC')
+                    'order' => ['Member.id ASC']
                 ]
             )
         );

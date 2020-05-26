@@ -4,7 +4,7 @@
 <?= $this->Html->script('bootstrap.min.js') ?>
 <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js') ?>
 <?= $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js') ?>
-<?= $this->Html->script('add', array('inline' => true)); ?>
+<?= $this->Html->script('add', ['inline' => true]); ?>
 
 <?php $this->assign('title', 'ユーザーの追加'); ?>
 <div class="py-3">
@@ -25,7 +25,6 @@
             );
             ?>
         </div>
-
         <div class="bg-white border px-3">
             <?php
             echo $this->Form->create('Member');

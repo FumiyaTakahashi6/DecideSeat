@@ -33,28 +33,28 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller
 {
 
-    public $components = array(
+    public $components = [
         //'DebugKit.Toolbar',
         'Flash',
         'Session',
-        'Auth' => array(
-            'loginRedirect' => array(
+        'Auth' => [
+            'loginRedirect' => [
                 'controller' => 'members',
                 'action' => 'index'
-            ),
-            'logoutRedirect' => array(
+            ],
+            'logoutRedirect' => [
                 'controller' => 'members',
                 'action' => 'select',
                 'home'
-            ),
-            'authenticate' => array(
-                'Form' => array(
+            ],
+            'authenticate' => [
+                'Form' => [
                     'passwordHasher' => 'Blowfish'
-                )
-            ),
-            'authorize' => array('Controller')
-        )
-    );
+                ]
+            ],
+            'authorize' => ['Controller']
+        ]
+    ];
 
     public function isAuthorized($user)
     {

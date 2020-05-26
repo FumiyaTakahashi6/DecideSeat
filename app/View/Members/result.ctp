@@ -2,7 +2,7 @@
 <?= $this->Html->script('https://code.jquery.com/jquery-2.2.4.min.js'); ?>
 <?= $this->Html->script('bootstrap.min.js') ?>
 <?= $this->Html->script('https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-alpha.12/dist/html2canvas.min.js') ?>
-<?= $this->Html->script('result', array('inline' => true)); ?>
+<?= $this->Html->script('result', ['inline' => true]); ?>
 
 <?php $this->assign('title', '席決め結果'); ?>
 <div class="py-3">

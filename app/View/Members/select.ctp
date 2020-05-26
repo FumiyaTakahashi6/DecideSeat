@@ -2,7 +2,7 @@
 <?= $this->Html->script('https://code.jquery.com/jquery-2.2.4.min.js'); ?>
 <?= $this->Html->script('bootstrap.min.js') ?>
 <?php echo $this->Html->css('select.css');?>
-<?php echo $this->Html->script('select', array('inline' => true)); ?>
+<?php echo $this->Html->script('select', ['inline' => true]); ?>
 
 <?php $this->assign('title', '席決め設定'); ?>
 <div class="py-3">
