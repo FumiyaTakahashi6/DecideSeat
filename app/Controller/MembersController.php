@@ -2,6 +2,7 @@
 class MembersController extends AppController
 {
     public $helpers = ['Html', 'Form', 'Flash'];
+    public $uses = ['Member', 'Department', 'Attribute'];
     public $components = ['Flash'];
 
     public function index()
@@ -20,7 +21,6 @@ class MembersController extends AppController
     public function add()
     {
         // 部署データ
-        $this->loadModel('Department');
         $this->set(
             'departments',
             $this->Department->find(
@@ -30,7 +30,6 @@ class MembersController extends AppController
             )
         );
         // 属性データ
-        $this->loadModel('Attribute');
         $this->set(
             'attributes',
             $this->Attribute->find(
@@ -62,7 +61,6 @@ class MembersController extends AppController
         }
 
         // 部署データ
-        $this->loadModel('Department');
         $this->set(
             'departments',
             $this->Department->find(
@@ -73,7 +71,6 @@ class MembersController extends AppController
         );
 
         // 属性データ
-        $this->loadModel('Attribute');
         $this->set(
             'attributes',
             $this->Attribute->find(
@@ -130,7 +127,6 @@ class MembersController extends AppController
         );
 
         // 属性データの送信
-        $this->loadModel('Attribute');
         $this->set(
             'attributes',
             $this->Attribute->find(
@@ -209,7 +205,6 @@ class MembersController extends AppController
                 $prioritys = array_filter($this->request->data['Conditions']['priority']);
 
                 //  部署データの取得
-                $this->loadModel('Department');
                 $departments_id = $this->Department->find(
                     'list', [
                         'fields' => 'Department.id',

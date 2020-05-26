@@ -2,6 +2,7 @@
 class AttributesController extends AppController
 {
     public $helpers = ['Html', 'Form', 'Flash'];
+    public $uses = ['Member', 'Attribute', 'Members_attribute'];
     public $components = ['Flash'];
 
     public function index()
@@ -18,8 +19,6 @@ class AttributesController extends AppController
 
     public function add()
     {
-        $this->loadModel('Attribute');
-        $this->loadModel('Member');
         $this->set(
             'members',
             $this->Member->find(
@@ -41,7 +40,6 @@ class AttributesController extends AppController
 
     public function edit($id = null)
     {
-        $this->loadModel('Member');
         if (!$id) {
             throw new NotFoundException(__('Invalid'));
         }
@@ -59,7 +57,6 @@ class AttributesController extends AppController
             )
         );
 
-        $this->loadModel('Members_attribute');
         $this->set(
             'members_attributes',
             $this->Members_attribute->find(
