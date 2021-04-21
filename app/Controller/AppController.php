@@ -27,45 +27,49 @@ App::uses('Controller', 'Controller');
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @package		app.Controller
- * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
+ * @package　　　app.Controller
+ * @link　　　　　https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
+class AppController extends Controller
+{
 
-    public $components = array(
-        'DebugKit.Toolbar',
+    public $components = [
+        //'DebugKit.Toolbar',
         'Flash',
-        'Auth' => array(
-            'loginRedirect' => array(
-                'controller' => 'posts',
+        'Session',
+        'Auth' => [
+            'loginRedirect' => [
+                'controller' => 'members',
                 'action' => 'index'
-            ),
-            'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
+            ],
+            'logoutRedirect' => [
+                'controller' => 'members',
+                'action' => 'select',
                 'home'
-            ),
-            'authenticate' => array(
-                'Form' => array(
+            ],
+            'authenticate' => [
+                'Form' => [
                     'passwordHasher' => 'Blowfish'
-                )
-            ),
-            'authorize' => array('Controller') // この行を追加しました
-        )
-    );
+                ]
+            ],
+            'authorize' => ['Controller']
+        ]
+    ];
 
-    public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
-    }
-
-    public function isAuthorized($user) {
+    public function isAuthorized($user)
+    {
         // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;
         }
-    
         // デフォルトは拒否
         return false;
     }
-}
 
+
+    public function beforeFilter()
+    {
+        $this->Auth->allow('select', 'result');
+        $this->set('auth', $this->Auth->user());
+    }
+}
